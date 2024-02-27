@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Great Lakes Bathymetry Map with Basemap Selector</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="https://js.arcgis.com/4.24/esri/themes/light/main.css" />
+    <script src="https://js.arcgis.com/4.24/"></script>
+
+    <script>
+      require([
+        "esri/Map",
+        "esri/views/MapView",
+        "esri/layers/FeatureLayer",
+        "esri/widgets/BasemapGallery"
+      ], function(Map, MapView, FeatureLayer, BasemapGallery) {
+
+        var layer = new FeatureLayer({
+          url: "https://services.arcgis.com/As5CFN3ThbQpy8Ph/ArcGIS/rest/services/Great_Lakes_Bathymetry/FeatureServer/0"
+        });
+
+        var map = new Map({
+          basemap: "topo-vector",
+          layers: [layer]
+        });
+
+        var view = new MapView({
+          container: "viewDiv",
+          map: map,
+          center: [-84.5, 44.5], // Longitude, latitude
+          zoom: 6
+        });
+
+        var basemapGallery = new BasemapGallery({
+          view: view,
+          container: document.createElement("div")
+        });
+
+        view.ui.add(basemapGallery, {
+          position: "top-right"
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <div id="viewDiv" style="height: 100vh; width: 100vw;"></div>
+  </body>
+</html>
