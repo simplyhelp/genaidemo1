@@ -1,12 +1,14 @@
 # Using Generative AI (ChatGPT v4) to create an "instant" ArcGIS web application
 
+## Find the video accompanying this code at https://youtu.be/oRB0SiIIH0o
+
 ArcGIS Online has many no-code options for deploying applications. With minimal understanding of coding, you can use Generative AI (Like ChatGPT v4 in this example) to create an application for you! Here is the full journey of how the code is generated, and a last prompt that demonstrates how when the prompts get more complicated it asks you to do more of the work. 
 
-## Me
+## My Prompt to ChatGPT
 
 Using this map service from ArcGIS Online "https://services.arcgis.com/As5CFN3ThbQpy8Ph/ArcGIS/rest/services/Great_Lakes_Bathymetry/FeatureServer/0" create a web page to display the map of the great lakes using the latest ArcGIS JavaScript API v4
 
-## ChatGPT
+## ChatGPT (Response to Me)
 
 To display a map of the Great Lakes using the ArcGIS Online service you provided with the latest ArcGIS JavaScript API version 4, you will need to write HTML and JavaScript code. Below is a basic example of how to do this. This code will create a simple web page that loads and displays the Great Lakes Bathymetry map layer on a base map.
 
@@ -128,7 +130,7 @@ Changes and additions to the original code include:
 
 This code will add a basemap selector to your web page, enabling users to switch between different basemaps while viewing the Great Lakes Bathymetry layer. The basemap gallery widget automatically provides a selection of basemaps from ArcGIS, and users can click on it to choose a different basemap.
 
-## Me
+## My Prompt to ChatGPT
 
 Can you add a UI to zoom to each of the great lakes?
 
@@ -232,7 +234,7 @@ Here's what was added to the original code:
 
 This code will create a series of buttons on the top left of the map view, each labeled with the name of a Great Lake. When a button is clicked, the map will zoom to the pre-defined extent for that lake. You can adjust the center coordinates and zoom levels in the `lakes` object to better fit the extents of each lake as desired.
 
-## Me
+## My Prompt to ChatGPT
 
 Create another webpage to include this already created page. On that other page give information about the depths of the great lakes with the map as a key element within it. 
 
@@ -309,7 +311,7 @@ To create a new webpage that includes the map page you've already created and pr
 
 Ensure the `src` attribute in the `<iframe>` tag correctly points to the location of your map page. If the map page is in a different directory, you'll need to adjust the path accordingly.
 
-## Me
+## My Prompt to ChatGPT
 
 Can you make the lake info headings clickable to zoom to the lake on the map?
 
@@ -387,7 +389,7 @@ function zoomToLake(lakeName) {
 
 Repeat the process for the headings of each lake. Ensure your map page and parent page are set up to allow for proper communication and that your environment is configured to test these interactions, especially considering the same-origin policy and CORS (Cross-Origin Resource Sharing) restrictions.
 
-## Me
+## My Prompt to ChatGPT
 
 Create me the full HTML for the parent page please
 
@@ -472,7 +474,7 @@ Below is the full HTML for the parent page that includes clickable lake info hea
 - The `cursor: pointer;` style for `h1, h2` makes it clear to users that these headings are clickable.
 - Remember to adjust the origin check in the map page's message listener to the actual origin of the parent page to ensure secure communication between the pages.
 
-## Me
+## My Prompt to ChatGPT
 
 The error "Uncaught DOMException: Failed to execute 'postMessage' on 'Window': Invalid target origin 'greatlakes.html' in a call to 'postMessage'.
     at zoomToLake (http://localhost/agol/lakesinfo.html:60:30)
@@ -509,7 +511,7 @@ This approach extracts the scheme, hostname, and port from the `src` of the `ifr
 
 **Note:** Using `'*'` as the target origin (meaning "no preference" for the target origin) in `postMessage` is generally not recommended for production environments due to security concerns, as it allows any website to receive the message. It's better to specify the exact target origin whenever possible.
 
-## Me
+## My Prompt to ChatGPT
 
 The iframe of the parent page has scroll bars in it. How can I remove those?
 
@@ -535,7 +537,7 @@ If the content within the `iframe` is still causing overflow, you might need to 
 
 Keep in mind that hiding scroll bars might cause parts of the `iframe` content to become inaccessible if the `iframe` isn't large enough to display everything. It's important to balance the size of the `iframe` and the size of its content to ensure a good user experience.
 
-## Me 
+## My Prompt to ChatGPT
 
 There are still scroll bars shown, perhaps they are coming from the map page?
 
